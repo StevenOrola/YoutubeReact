@@ -11,13 +11,18 @@ class SearchBar extends Component {
 	//whenever we reference a javascript variable, wrap it with curly braces {this.state.term}
 	render() {
 		return ( 
-			<div>
+			<div className="search-bar">
 				<input 
-					value={this.state.term}
-					onChange = { event => this.setState( { term: event.target.value})} />
+					value = {this.state.term}
+					onChange = {event => this.onInputChange(event.target.value)} />
 			</div>
 		);
 		//return <input onChange = {this.onInputChange} />;
+	}
+	
+	onInputChange(term) {
+		this.setState({term});
+		this.props.onSearchTermChange(term);
 	}
 	
 	//onInputChange(event) {
